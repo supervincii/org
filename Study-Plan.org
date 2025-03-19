@@ -1,0 +1,112 @@
+#+TITLE: Career Roadmap
+
+* Goals
+- Supplement lacking CS fundamentals knowledge.
+- Improve my skills as a backend engineer.
+- Develop a specialization with database internals and data engineering.
+
+* The Study Plan
+
+** Year 1: Foundations
+
+*** Q1: Computer Science Fundamentals & SQL
+
+**** Month 1-2: Database Concepts & SQL Foundations
+
+***** Resources
+- Database System Concepts by Silberschatz, Korth, and Sudarshan
+
+***** Topics
+Relational model, SQL fundamentals, schema design
+
+***** Project
+Design and implement a database schema for an inventory management system with SQL
+
+**** Month 3: Advanced SQL
+
+***** Resources
+- SQL Performance Explained by Markus Winand
+- SQL Antipatterns by Bill Karwin
+
+***** Topics
+Complex queries, window functions, query optimization techniques
+
+***** Project
+Build a query performance analysis tool that generates optimized queries
+
+*** Q2: Data Structures & Algorithms for Databases
+
+**** Month 4-5: Data Structures & Algorithms
+
+***** Resources
+- The Algorithm Design Manual by Steven Skiena
+
+***** Topics
+Lists, trees, graphs, sorting, searching with focus on database applications
+
+***** Project
+Implement common index structures (B-tree, hash index) from scratch
+
+**** Month 6: Storage Structures
+
+***** Resources
+- Database Internals by Alex Petrov (Chapters on storage structures)
+- Research papers on database storage models
+
+***** Topics
+Page layouts, record formats, storage models (row vs. column)
+
+***** Project
+Design a simple storage manager that efficiently stores and retrieves records
+
+*** Q3: Programming Languages for Database Systems
+
+**** Month 7-8: Java Programming
+
+***** Resources
+- Effective Java by Joshua Bloch
+- Java Concurrency in Practice by Brian Goetz
+
+***** Topics
+Object-oriented design, concurrency, memory management
+
+***** Project
+Build a connection pool and simple query executor in Java
+
+**** Month 9: C/C++ Programming
+
+***** Resources
+- The C Programming Language by Kernighan and Ritchie
+- C++ Primer by Lippman
+
+***** Topics
+Memory management, pointers, system calls
+
+***** Project
+Implement a memory-mapped storage manager in C/C++
+
+*** Q4: Operating Systems & Computer Architecture
+
+**** Month 10-11: Operating Systems
+
+***** Resources
+- OSTEP
+
+***** Topics
+Process management, memory systems, file systems, I/O
+
+***** Project
+Build a simple key-value store with persistent storage
+
+**** Month 12: Computer Architecture
+
+***** Resources
+- CS: APP
+
+***** Topics
+CPU architecture, memory hierarchy, caching strategies
+
+***** Project
+Optimize your key-value store for cache efficency
+
+** Year 2: Database Internals & Data Engineering
