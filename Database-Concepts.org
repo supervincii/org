@@ -1,0 +1,26 @@
+#+TITLE: Database Concepts
+#+DESCRIPTION: Review notes from the book "Database System Concepts"
+
+* Table of Contents :toc:
+- [[#introduction][Introduction]]
+  - [[#database-system-applications][Database-System Applications]]
+  - [[#purpose-of-database-systems][Purpose of Database Systems]]
+
+* Introduction
+
+** Database-System Applications
+Database systems are used to manage collections of data that:
+- are highly valuable
+- are relatively large
+- are accessed by multiple users and applications
+
+For a large complex collection of data, a database system priveds a simpler, abstract view of the information so that users don't need to be aware of the underlying details of how the data are stored and organized.
+
+There are two modes in which databases are used today:
+1. Supporting *online transaction processing*
+   - where a large number of users use the database for retrieving and updating small amounts of data. This is the primary mode for the vast majority of users.
+2. Support *data analytics*
+   - processing data to draw conclusions, used to drive business decisions.
+   - used to create predictive models from rules & patterns from data
+
+** Purpose of Database Systems

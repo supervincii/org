@@ -110,3 +110,105 @@ CPU architecture, memory hierarchy, caching strategies
 Optimize your key-value store for cache efficency
 
 ** Year 2: Database Internals & Data Engineering
+
+*** Q1: Database Engine Fundamentals
+
+**** Month 1-2: CMU Database Course
+
+***** Resources
+- CMU Intro and Advanced Database Course
+
+***** Topics
+- Buffer management, indexing, join algorithms, query optimization
+
+***** Project
+- Complete course projects to build database engine components
+
+**** Month 3: Transaction Processing
+
+***** Resources
+- Transaction Processing: Concepts and Techniques by Gray and Reuter
+- Architecture of a Database System Research Paper by Hellerstein et al.
+
+***** Topics
+ACID properties, concurrency control, isolation levels
+
+***** Project
+Implement a simple transaction manager with MVCC
+
+*** Q2: Query Processing & Optmization
+
+**** Month 4-5: Query Processing
+
+***** Resources
+- Database Management Systems by Ramakrishnan and Gherke (query processing chapters)
+- Making Database Systems Usable paper by Jagadish
+
+***** Topics
+Query parsing, execution plans, physical operators
+
+***** Project
+Build a simple query optimizer that generates execution plans
+
+**** Month 6: Advanced Query Optimization
+
+***** Resources
+- Research papers on query optimizations
+- PostgreSQL optimizer documentation
+
+***** Topics
+Cost models, statistics, join order optimization
+
+***** Project
+Extend your query optimizer with cost-based optimization
+
+*** Q3: Data Engineering Foundations
+
+**** Month 7-8: ETL & Data Pipelines
+
+***** Resources
+- Designing Data-Intensive Applications by Martin Kleppmann
+- Data Pipelines Pocket Reference by James Densmore
+
+***** Topics
+Batch processing, data integration, data quality
+
+***** Project
+Build an ETL pipeline using Apache Airflow
+
+**** Month 9: Stream Processing
+
+***** Resources
+- Streaming Systems by Tyler Akidau et al.
+- Apache Kafka documentation
+
+***** Topics
+Stream processing concepts, event-driven architectures
+
+***** Project
+Create a real-time data processing application with Kafka and Kafka Streams
+
+*** Q4: Distributed Systems & Database Scaling
+
+**** Month 10-11: Distributed Systems Concepts
+
+***** Resources
+- Designing Data-Intensive Applications by Martin Kleppmann
+
+***** Topics
+Replication, partitioning, consistency models
+
+***** Project
+Implement a distributed key-value store with replication.
+
+**** Month 12: Consensus & Distributed Transations
+
+***** Resources
+- Designing Data-Intensive Applications
+- Research papers on distributed consensus (Paxos, Raft)
+
+***** Topics
+- Consensus algorithms, distributed transactions
+
+***** Project
+Add consensus based replication to your distributed store
