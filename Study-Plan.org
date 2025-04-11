@@ -1,214 +1,44 @@
-#+TITLE: Career Roadmap
+#+TITLE: Database & Tools Engineer Study Plan
 
-* Goals
-- Supplement lacking CS fundamentals knowledge.
-- Improve my skills as a backend engineer.
-- Develop a specialization with database internals and data engineering.
+* Python-Based Database Foundations
 
-* The Study Plan
+** Advanced Python & Database Concepts
 
-** Year 1: Foundations
+Topics:
+- Advanced Python techniques (decorators, metaclasses, async/await)
+- Database architecture fundamentals
+- SQL optimization principles
 
-*** Q1: Computer Science Fundamentals & SQL
+Resources:
+- Fluent Python by Luciano Ramalho
+- Database Design for Mere Mortals by Michael J. Hernandez
+- The Art of PostgreSQL by Dimitri Fontaine
 
-**** Month 1-2: Database Concepts & SQL Foundations
+*** Project: Database Migration Tool
 
-***** Resources
-- Database System Concepts by Silberschatz, Korth, and Sudarshan
+Build a Python tool to automate database schema migrations with rollback capabilities and validation checks.
 
-***** Topics
-Relational model, SQL fundamentals, schema design
+** Database Performance & Query Optimization
 
-***** Project
-Design and implement a database schema for an inventory management system with SQL
-
-**** Month 3: Advanced SQL
-
-***** Resources
+Resources:
+- High Performance Python by Micha Gorelick & Ian Ozsvald
 - SQL Performance Explained by Markus Winand
-- SQL Antipatterns by Bill Karwin
+- PostgreSQL 14 Administration Cookbook by Simon Riggs & Gianni Ciolli (focus on performance chapters)
+- [[https://explain.depesz.com][PostgreSQL's EXPLAIN ANALYZE Reader/Analysis Tool]]
 
-***** Topics
-Complex queries, window functions, query optimization techniques
+*** Project: SQL Analysis Tool
 
-***** Project
-Build a query performance analysis tool that generates optimized queries
+Create a Python application that analyzes SQL queries and suggest performance improvements with visual execution plans.
 
-*** Q2: Data Structures & Algorithms for Databases
+** Python Concurrency & Data Pipelines
 
-**** Month 4-5: Data Structures & Algorithms
+- Python Concurrency with ~asyncio~ by Matthew Fowler
+- Data Pipelines with Python by Julian Sequeira
+- Effective Python by Brett Slatkin (concurrency chapters)
+- Apache Airflow Documentation
 
-***** Resources
-- The Algorithm Design Manual by Steven Skiena
+*** Project: Concurrent Data Pipeline
 
-***** Topics
-Lists, trees, graphs, sorting, searching with focus on database applications
+Build a multi-threaded ETL pipeline in Python that efficiently processes data from multiple sources into a structured database.
 
-***** Project
-Implement common index structures (B-tree, hash index) from scratch
-
-**** Month 6: Storage Structures
-
-***** Resources
-- Database Internals by Alex Petrov (Chapters on storage structures)
-- Research papers on database storage models
-
-***** Topics
-Page layouts, record formats, storage models (row vs. column)
-
-***** Project
-Design a simple storage manager that efficiently stores and retrieves records
-
-*** Q3: Programming Languages for Database Systems
-
-**** Month 7-8: Java Programming
-
-***** Resources
-- Effective Java by Joshua Bloch
-- Java Concurrency in Practice by Brian Goetz
-
-***** Topics
-Object-oriented design, concurrency, memory management
-
-***** Project
-Build a connection pool and simple query executor in Java
-
-**** Month 9: C/C++ Programming
-
-***** Resources
-- The C Programming Language by Kernighan and Ritchie
-- C++ Primer by Lippman
-
-***** Topics
-Memory management, pointers, system calls
-
-***** Project
-Implement a memory-mapped storage manager in C/C++
-
-*** Q4: Operating Systems & Computer Architecture
-
-**** Month 10-11: Operating Systems
-
-***** Resources
-- OSTEP
-
-***** Topics
-Process management, memory systems, file systems, I/O
-
-***** Project
-Build a simple key-value store with persistent storage
-
-**** Month 12: Computer Architecture
-
-***** Resources
-- CS: APP
-
-***** Topics
-CPU architecture, memory hierarchy, caching strategies
-
-***** Project
-Optimize your key-value store for cache efficency
-
-** Year 2: Database Internals & Data Engineering
-
-*** Q1: Database Engine Fundamentals
-
-**** Month 1-2: CMU Database Course
-
-***** Resources
-- CMU Intro and Advanced Database Course
-
-***** Topics
-- Buffer management, indexing, join algorithms, query optimization
-
-***** Project
-- Complete course projects to build database engine components
-
-**** Month 3: Transaction Processing
-
-***** Resources
-- Transaction Processing: Concepts and Techniques by Gray and Reuter
-- Architecture of a Database System Research Paper by Hellerstein et al.
-
-***** Topics
-ACID properties, concurrency control, isolation levels
-
-***** Project
-Implement a simple transaction manager with MVCC
-
-*** Q2: Query Processing & Optmization
-
-**** Month 4-5: Query Processing
-
-***** Resources
-- Database Management Systems by Ramakrishnan and Gherke (query processing chapters)
-- Making Database Systems Usable paper by Jagadish
-
-***** Topics
-Query parsing, execution plans, physical operators
-
-***** Project
-Build a simple query optimizer that generates execution plans
-
-**** Month 6: Advanced Query Optimization
-
-***** Resources
-- Research papers on query optimizations
-- PostgreSQL optimizer documentation
-
-***** Topics
-Cost models, statistics, join order optimization
-
-***** Project
-Extend your query optimizer with cost-based optimization
-
-*** Q3: Data Engineering Foundations
-
-**** Month 7-8: ETL & Data Pipelines
-
-***** Resources
-- Designing Data-Intensive Applications by Martin Kleppmann
-- Data Pipelines Pocket Reference by James Densmore
-
-***** Topics
-Batch processing, data integration, data quality
-
-***** Project
-Build an ETL pipeline using Apache Airflow
-
-**** Month 9: Stream Processing
-
-***** Resources
-- Streaming Systems by Tyler Akidau et al.
-- Apache Kafka documentation
-
-***** Topics
-Stream processing concepts, event-driven architectures
-
-***** Project
-Create a real-time data processing application with Kafka and Kafka Streams
-
-*** Q4: Distributed Systems & Database Scaling
-
-**** Month 10-11: Distributed Systems Concepts
-
-***** Resources
-- Designing Data-Intensive Applications by Martin Kleppmann
-
-***** Topics
-Replication, partitioning, consistency models
-
-***** Project
-Implement a distributed key-value store with replication.
-
-**** Month 12: Consensus & Distributed Transations
-
-***** Resources
-- Designing Data-Intensive Applications
-- Research papers on distributed consensus (Paxos, Raft)
-
-***** Topics
-- Consensus algorithms, distributed transactions
-
-***** Project
-Add consensus based replication to your distributed store
+* Data Structures & Algorithms for Databases
