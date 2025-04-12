@@ -32,6 +32,7 @@ Create a Python application that analyzes SQL queries and suggest performance im
 
 ** Python Concurrency & Data Pipelines
 
+Resources:
 - Python Concurrency with ~asyncio~ by Matthew Fowler
 - Data Pipelines with Python by Julian Sequeira
 - Effective Python by Brett Slatkin (concurrency chapters)
@@ -42,3 +43,25 @@ Create a Python application that analyzes SQL queries and suggest performance im
 Build a multi-threaded ETL pipeline in Python that efficiently processes data from multiple sources into a structured database.
 
 * Data Structures & Algorithms for Databases
+
+** Core Data Structures
+
+Resources:
+- Problem Solving with Algorithms and Data Structures using Python by Miller and Ranum
+- The Algorithm Design Manual by Steven Skiena
+- Database Internals by Alex Petrov
+
+*** Project: Custom Index Implementation
+
+Implement a B-tree and hash index structures in Python with persistence to disk, simulating database indexing mechanisms.
+
+** Algorithms for Databases
+
+Resources:
+- Grokking Algorithms by Aditya Bhargava
+- Introduction to Algorithms by CLRS
+- Database Systems: The Complete Book by Garcia-Molina, Ullman & Widom (query processing chapters)
+  
+*** Project: Query Optimizer Component
+
+Create a Python component that optimizes JOIN order in SQL queries using graph-based algorithms.
