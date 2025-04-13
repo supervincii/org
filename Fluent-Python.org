@@ -1,0 +1,61 @@
+#+TITLE: Fluent Python
+#+AUTHOR: supervincii
+#+DESCRIPTION: Personal notes on the book Fluent Python
+
+* Table of Contents :toc:
+- [[#chapter-1-the-python-data-model][Chapter 1: The Python Data Model]]
+  - [[#a-pythonic-card-deck][A Pythonic Card Deck]]
+
+* Chapter 1: The Python Data Model
+
+The *Pythonic Data Model* is the API that we use as programmers to make our own objects play well with the most idiomatic language features. Think of it as a *description of Python as a framework*, and formalizes the the interfaces of the building blocks of the language itself.
+
+When we leverage the Python Data Model to build classes, the Python interpreter invokes special methods to perform basic object operations, often triggered by special syntax. These special methods are written with leading & trailing double underscores, called ~dunder methods~.
+
+For example, ~obj[key]~ is supported by the ~__getitem__~ special method. In order to evaluate ~my_collection[key]~, the interpreter calles ~my_collection.__getitem__(key)~.
+
+** A Pythonic Card Deck
+
+#+begin_src python
+  import collections
+
+  # namedtuple creates a lightweight data structure the same as a class w/o
+  # the overhead of defining a full class.
+  # Syntax: collections.namedtuple(typename, field_names)
+  Card = collections.namedtuple('Card', ['rank', 'suit'])
+
+  class FrenchDeck:
+      # ranks creates a list of string from 2 - 10, and concatenates a list
+      # containing J, Q, K, and A.
+      ranks = [str(n) for n in range(2, 11)] + list('JQKA')
+      # suits creates a list of the suits of a card.
+      suits = 'spades diamonds clubs hearts'.split()
+
+      def __init__(self):
+          # Creates the cards in a deck
+          self._cards = [Card(rank, suit) for suit in self.suits
+                         for rank in self.ranks]
+
+      # Gets the length of the cards
+      def __len__(self):
+          return len(self._cards)
+
+      # Gets the value of a card based on its position
+      def __getitem__(self, position):
+          return self._cards[position]
+#+end_src
+
+The ~FrenchDeck~ class demonstrated the advantages of using special methodsl to leverage the Python Data Model namely:
+1. Users of the classes don't have to memorize arbitrary method names for standard operations.
+2. It's easier to benefit from the rich Python standard library and avoid reinventing the wheel. In this case we can use ~random.choice~ function as the class is a sequence.
+
+The ~FrenchDeck~ class also allows slicing since ~__getitem__~ delegates to the [] operator of ~self._cards~. It is also iterable also due to the implementation of ~__getitem__~. Iteration is often implicit. If a collection has no ~__contains__~ method, the ~in~ operator does a sequential scan. Since our class is iterable, we can do ~Card('Q', 'hearts') in deck~.
+
+We can do sorting by implementing a function that sorts the cards based on their suits and ranks.
+#+begin_src python
+  suit_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
+
+  def spades_high(card):
+      rank_value = FrenchDeck.ranks.index(card.rank)
+      return rank_value * len(suit_values) + suit_values[card.suit]
+#+end_src
