@@ -1,67 +1,246 @@
-#+TITLE: Database & Tools Engineer Study Plan
+#+TITLE: Backend Engineer Career Plan
 
-* Python-Based Database Foundations
+* Comprehensive Study Plan for Backend Engineer Career Advancement
+This 24-month plan is designed to transition from Junior to Senior Backend Engineer by balancing practical skills, CS fundamentals, project-based learning, and interview preparation.
 
-** Advanced Python & Database Concepts
+** Overview
+   - Transition to a Senior Backend role
+   - Build on practical backend skills and reinforce CS theory
+   - Develop a portfolio with multiple real-world projects
+   - Prepare for technical and system design interviews
 
-Topics:
-- Advanced Python techniques (decorators, metaclasses, async/await)
-- Database architecture fundamentals
-- SQL optimization principles
+** Structure
+   - *Year 1: Building Core Competencies*
+   - *Year 2: Advanced Topics & Specialization*
 
-Resources:
-- Fluent Python by Luciano Ramalho
-- Database Design for Mere Mortals by Michael J. Hernandez
-- The Art of PostgreSQL by Dimitri Fontaine
+* Year 1: Building Core Competencies
 
-*** Project: Database Migration Tool
+** Month 1-2: Advanced Backend Development with Node.js & TypeScript
+   - *Focus:* Understanding the primary tech stack (TypeScript, Node.js, RESTful API design)
+   - *Core Study:* TypeScript, Node.js fundamentals, RESTful API principles
+   - *Project:* 
+     - Build a scalable REST API using TypeScript, Node.js, Express, and PostgreSQL.
+     - Implement authentication/authorization, logging, error handling.
+     - Write unit and integration tests; document using Swagger/OpenAPI.
+   - *CS Theory:* Begin algorithm basics (2-3 problems per week)
+   - *Resources:*
+     - "Node.js Design Patterns" by Mario Casciaro
+     - "Programming TypeScript" by Boris Cherny
+     - Stephen Grider's TypeScript course on Udemy
+     - Official TypeScript and Node.js docs
+   - *Expected Outcomes:*
+     - Master asynchronous programming and the type system in TypeScript.
+     - Gain practical RESTful API design and test-driven development experience.
 
-Build a Python tool to automate database schema migrations with rollback capabilities and validation checks.
+** Month 3-4: Database Mastery
+   - *Focus:* SQL, PostgreSQL, and database optimization
+   - *Core Study:* Advanced SQL, indexing strategies, query optimization, normalization
+   - *Project:* 
+     - Undertake a database migration and optimization project.
+     - Design indexing strategies, implement query optimization and migrations.
+     - Use connection pooling, implement repository patterns, and manage transactions.
+   - *CS Theory:* Data structures (arrays, linked lists, stacks, queues)
+   - *Resources:*
+     - "SQL Performance Explained" by Markus Winand
+     - "PostgreSQL 14 Administration Cookbook" by Simon Riggs et al.
+     - CMU Databases Course
+     - PostgreSQL official documentation
+   - *Expected Outcomes:*
+     - Understand execution plans and effective indexing.
+     - Master database normalization and transaction management.
 
-** Database Performance & Query Optimization
+** Month 5-6: Microservices Architecture
+   - *Focus:* Transition from monolithic applications to microservices
+   - *Core Study:* Microservices patterns, communication protocols, API gateways
+   - *Project:* 
+     - Refactor the Month 1-2 REST API into a microservices architecture.
+     - Split services along logical boundaries; implement service discovery and an API gateway.
+     - Add inter-service communication and resilience patterns (circuit breakers, retries).
+   - *CS Theory:* Trees, graphs, and basic algorithms
+   - *Resources:*
+     - "Building Microservices" by Sam Newman
+     - "Monolith to Microservices" by Sam Newman
+     - Microservices with Node.js and React course
+     - Express.js and related microservices documentation
+   - *Expected Outcomes:*
+     - Learn microservices design and deployment strategies.
+     - Gain experience handling distributed data management.
 
-Resources:
-- High Performance Python by Micha Gorelick & Ian Ozsvald
-- SQL Performance Explained by Markus Winand
-- PostgreSQL 14 Administration Cookbook by Simon Riggs & Gianni Ciolli (focus on performance chapters)
-- [[https://explain.depesz.com][PostgreSQL's EXPLAIN ANALYZE Reader/Analysis Tool]]
+** Month 7-8: Distributed Systems Foundations
+   - *Focus:* Principles of distributed computing
+   - *Core Study:* Distributed systems fundamentals and the CAP theorem
+   - *Project:* 
+     - Build a distributed data processing pipeline.
+     - Implement a simple map-reduce framework, manage distributed state, fault tolerance, and leader election.
+   - *CS Theory:* Advanced algorithms (sorting, searching)
+   - *Resources:*
+     - "Designing Data-Intensive Applications" by Martin Kleppmann
+     - MIT 6.824: Distributed Systems course
+     - "Time, Clocks, and the Ordering of Events in a Distributed System" by Leslie Lamport (paper)
+     - Blog: Distributed Systems for Fun and Profit
+   - *Expected Outcomes:*
+     - Understand consistency models and distributed consensus.
+     - Learn to handle failures and network partitions gracefully.
 
-*** Project: SQL Analysis Tool
+** Month 9-10: Cloud Infrastructure & DevOps
+   - *Focus:* Google Cloud Platform, CI/CD, and Docker containerization
+   - *Core Study:* GCP services, containerization, and infrastructure as code
+   - *Project:* 
+     - Deploy microservices on GCP using an automated CI/CD pipeline.
+     - Containerize applications with Docker; use GitHub Actions or GitLab CI/CD.
+     - Implement infrastructure as code with Terraform and set up monitoring/logging.
+   - *CS Theory:* Operating systems basics
+   - *Resources:*
+     - "Google Cloud Platform in Action" by JJ Geewax
+     - "Docker Deep Dive" by Nigel Poulton
+     - Google Cloud Certified Professional Cloud Architect course
+     - GCP documentation
+   - *Expected Outcomes:*
+     - Master containerization and cloud architecture.
+     - Gain proficiency in CI/CD and infrastructure as code.
 
-Create a Python application that analyzes SQL queries and suggest performance improvements with visual execution plans.
+** Month 11-12: Caching & Performance Optimization
+   - *Focus:* Implementing caching and optimizing performance
+   - *Core Study:* Caching strategies, memory management, and performance profiling
+   - *Project:* 
+     - Integrate a caching layer into your microservices.
+     - Implement Redis caching, memory caching, and cache invalidation.
+     - Conduct load testing and benchmark performance improvements.
+   - *CS Theory:* Computer architecture basics
+   - *Resources:*
+     - "Redis in Action" by Josiah L. Carlson
+     - "High Performance Browser Networking" by Ilya Grigorik
+     - Redis official documentation
+     - Web Performance Fundamentals course
+   - *Expected Outcomes:*
+     - Understand various caching mechanisms and Redis data structures.
+     - Master techniques for performance profiling and cache invalidation.
 
-** Python Concurrency & Data Pipelines
+* Year 2: Advanced Topics & Specialization
 
-Resources:
-- Python Concurrency with ~asyncio~ by Matthew Fowler
-- Data Pipelines with Python by Julian Sequeira
-- Effective Python by Brett Slatkin (concurrency chapters)
-- Apache Airflow Documentation
+** Month 13-14: Scalable System Design
+   - *Focus:* Designing systems for large-scale applications
+   - *Core Study:* Load balancing, horizontal/vertical scaling, and design patterns for system architecture
+   - *Project:* 
+     - Design and implement a scalable message processing system.
+     - Use message queues (RabbitMQ or Kafka), producer-consumer patterns, and implement backpressure and load balancing.
+   - *CS Theory:* Computer networking fundamentals
+   - *Resources:*
+     - "System Design Interview" by Alex Xu
+     - "Web Scalability for Startup Engineers" by Artur Ejsmont
+     - Grokking the System Design Interview course
+     - Blog: High Scalability
+   - *Expected Outcomes:*
+     - Understand the principles of system design and scalability.
+     - Gain expertise in implementing load balancing strategies and managing high-throughput systems.
 
-*** Project: Concurrent Data Pipeline
+** Month 15-16: Security & Authentication
+   - *Focus:* Secure API design and modern authentication/authorization methods
+   - *Core Study:* OAuth, JWT, and security best practices
+   - *Project:* 
+     - Develop a comprehensive authentication system.
+     - Implement OAuth 2.0, OpenID Connect, JWT-based authentication, and role-based access control.
+     - Add audit logging and conduct thorough security testing.
+   - *CS Theory:* Discrete mathematics basics (logic, proofs)
+   - *Resources:*
+     - "OAuth 2.0 in Action" by Justin Richer
+     - "API Security in Action" by Neil Madden
+     - Web Security Academy course
+     - OWASP Top 10 documentation
+   - *Expected Outcomes:*
+     - Master secure API design and authentication protocols.
+     - Learn best practices in API security and authorization.
 
-Build a multi-threaded ETL pipeline in Python that efficiently processes data from multiple sources into a structured database.
+** Month 17-18: Data Processing & Analytics
+   - *Focus:* Efficiently handling and analyzing large datasets
+   - *Core Study:* Data processing patterns, ETL, and time series data handling
+   - *Project:* 
+     - Build a data pipeline to process and analyze sensor data.
+     - Implement multi-source data ingestion, ETL pipelines, efficient storage of time series data, aggregation, and create dashboards.
+   - *CS Theory:* Computational complexity (Big O notation)
+   - *Resources:*
+     - "Data-Intensive Processing with Node.js" by Prasad Shirke
+     - "Streaming Systems" by Tyler Akidau et al.
+     - Data Engineering on Google Cloud Platform course
+     - Relevant data processing framework documentation
+   - *Expected Outcomes:*
+     - Understand ETL and time series data management.
+     - Gain expertise in data visualization and analytics.
 
-* Data Structures & Algorithms for Databases
+** Month 19-20: Real-time Systems
+   - *Focus:* Real-time communication and event-driven architectures
+   - *Core Study:* Event sourcing, CQRS, and real-time protocols (WebSockets)
+   - *Project:* 
+     - Develop a real-time dashboard for monitoring system metrics.
+     - Implement WebSockets for live updates, design an event-driven system, and create a responsive UI with notifications.
+   - *CS Theory:* Concurrency and parallelism
+   - *Resources:*
+     - "Building Microservices" by Sam Newman (Second Edition)
+     - "Event-Driven Architecture" by Kello Pressman
+     - Real-Time Web with Node.js course
+     - Socket.IO and WebSockets documentation
+   - *Expected Outcomes:*
+     - Master real-time communication protocols and architecture.
+     - Create dynamic, responsive real-time interfaces.
 
-** Core Data Structures
+** Month 21-22: Capstone Project & Advanced Topics
+   - *Focus:* Integrating all the learnings into one comprehensive system
+   - *Project: Factory Performance Monitoring System*
+     - Collect and process simulated factory sensor data.
+     - Utilize real-time processing, microservices architecture, and scalable cloud deployment.
+     - Implement performance dashboards, alerts, and comprehensive documentation (system diagrams, case studies, demo videos).
+   - *CS Theory:* Advanced topics (addressing personalized gaps)
+   - *Expected Outcomes:*
+     - Demonstrate end-to-end system integration and advanced engineering skills.
 
-Resources:
-- Problem Solving with Algorithms and Data Structures using Python by Miller and Ranum
-- The Algorithm Design Manual by Steven Skiena
-- Database Internals by Alex Petrov
+** Month 23-24: Interview Preparation & Portfolio Refinement
+   - *Focus:* Technical interview skills, system design, and portfolio enhancement
+   - *Core Study:* Common interview patterns, presentation, and effective communication of project work
+   - *Project: Portfolio Website & Documentation*
+     - Document all projects with detailed architecture decisions and system diagrams.
+     - Write technical blog posts, prepare case studies, and create demo videos.
+   - *CS Theory:* Review and practice data structures & algorithms
+   - *Resources:*
+     - "Cracking the Coding Interview" by Gayle Laakmann McDowell
+     - "System Design Interview" by Alex Xu
+     - LeetCode platform
+     - Pramp for mock interviews
+   - *Expected Outcomes:*
+     - Develop a polished and comprehensive project portfolio.
+     - Be thoroughly prepared for technical and system design interviews.
 
-*** Project: Custom Index Implementation
+* CS Fundamentals Integration
+   - *Algorithms & Data Structures (Months 1-8)*
+     - Resource: "Grokking Algorithms" by Aditya Bhargava
+   - *Computer Architecture (Months 11-12)*
+     - Resource: Selected chapters from "Computer Systems: A Programmer's Perspective"
+   - *Operating Systems (Months 9-10)*
+     - Resource: Selected chapters from "Operating Systems: Three Easy Pieces"
+   - *Computer Networking (Months 13-14)*
+     - Resource: Selected chapters from "Computer Networking: A Top-Down Approach"
+   - *Discrete Mathematics (Months 15-16)*
+     - Resource: "Discrete Mathematics and Its Applications" by Kenneth Rosen (selected chapters)
 
-Implement a B-tree and hash index structures in Python with persistence to disk, simulating database indexing mechanisms.
+* Key Milestones & Progress Tracking
+   - *End of Month 4:*
+     - Completed REST API project with database integration
+     - Gained basic proficiency in TypeScript, Node.js, and PostgreSQL
+     - Solved 20–30 algorithm problems
+   - *End of Month 8:*
+     - Converted API to a microservices architecture and built a distributed system
+     - Deepened understanding of algorithms, data structures, and system design
+   - *End of Month 12:*
+     - Deployed microservices to the cloud
+     - Implemented caching and performance optimizations
+     - Solidified CS fundamentals with documented projects
+   - *End of Month 18:*
+     - Developed a scalable system with integrated security features
+     - Built a data processing pipeline for sensor data analytics
+   - *End of Month 24:*
+     - Completed the capstone project and refined the portfolio
+     - Prepared comprehensively for technical interviews and senior role applications
 
-** Algorithms for Databases
-
-Resources:
-- Grokking Algorithms by Aditya Bhargava
-- Introduction to Algorithms by CLRS
-- Database Systems: The Complete Book by Garcia-Molina, Ullman & Widom (query processing chapters)
-  
-*** Project: Query Optimizer Component
-
-Create a Python component that optimizes JOIN order in SQL queries using graph-based algorithms.
+* Study Plan Execution
+   - *Time Commitment:* Approximately 2–3 hours daily
+   - *Consistency:* Focus on regular progress and project completion
+   - *Portfolio:* Continuously document projects and learnings to build a compelling portfolio

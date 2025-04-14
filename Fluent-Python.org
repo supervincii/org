@@ -5,6 +5,7 @@
 * Table of Contents :toc:
 - [[#chapter-1-the-python-data-model][Chapter 1: The Python Data Model]]
   - [[#a-pythonic-card-deck][A Pythonic Card Deck]]
+  - [[#how-special-methods-are-used][How Special Methods Are Used]]
 
 * Chapter 1: The Python Data Model
 
@@ -49,13 +50,34 @@ The ~FrenchDeck~ class demonstrated the advantages of using special methodsl to 
 1. Users of the classes don't have to memorize arbitrary method names for standard operations.
 2. It's easier to benefit from the rich Python standard library and avoid reinventing the wheel. In this case we can use ~random.choice~ function as the class is a sequence.
 
+#+begin_quote
+A sequence in Python can simply be defined as a data structure that is *iterable*, has *length*, and where an *element can be accessed based on its position using an integer index*.
+#+end_quote
+
 The ~FrenchDeck~ class also allows slicing since ~__getitem__~ delegates to the [] operator of ~self._cards~. It is also iterable also due to the implementation of ~__getitem__~. Iteration is often implicit. If a collection has no ~__contains__~ method, the ~in~ operator does a sequential scan. Since our class is iterable, we can do ~Card('Q', 'hearts') in deck~.
 
 We can do sorting by implementing a function that sorts the cards based on their suits and ranks.
 #+begin_src python
+  # Create a dictionary with suit as the key and assign values
   suit_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
 
   def spades_high(card):
       rank_value = FrenchDeck.ranks.index(card.rank)
       return rank_value * len(suit_values) + suit_values[card.suit]
 #+end_src
+
+#+begin_example python
+>>> for card in sorted(deck, key=spades_high):
+        print(card)
+Card(rank='2', suit='clubs')
+Card(rank='2', suit='diamonds')
+Card(rank='2', suit='hearts')
+...
+Card(rank='A', suit='diamonds')
+Card(rank='A', suit='hearts')
+Card(rank='A', suit='spades')
+#+end_example
+
+In essence, by leveraging the data model and composition, our ~FrenchDeck~ class behaves like a standard Python sequence allowing it to benefit from the core language features, and the standard library.
+
+** How Special Methods Are Used
