@@ -1,0 +1,190 @@
+#+TITLE: Node.js
+#+DESCRIPTION: Personal notes on Node.js
+
+* Table of Contents :toc@4:
+- [[#preface][Preface]]
+- [[#documentation-notes][Documentation Notes]]
+  - [[#introduction-to-nodejs][Introduction to Node.js]]
+    - [[#example-nodejs-application][Example Node.js Application]]
+  - [[#what-is-recommended-to-learn-before-diving-deep-with-nodejs][What is recommended to learn before diving deep with Node.js?]]
+    - [[#lexical-structure][Lexical Structure]]
+    - [[#expressions][Expressions]]
+    - [[#data-types][Data Types]]
+      - [[#dynamic--weak-typing][Dynamic & Weak Typing]]
+      - [[#primitive-values][Primitive Values]]
+      - [[#objects][Objects]]
+    - [[#classes][Classes]]
+      - [[#defining-classes][Defining Classes]]
+      - [[#class-body][Class Body]]
+    - [[#variables][Variables]]
+    - [[#functions][Functions]]
+    - [[#this-operator][~this~ Operator]]
+    - [[#arrow-functions][Arrow Functions]]
+    - [[#loops][Loops]]
+    - [[#scopes][Scopes]]
+    - [[#arrays][Arrays]]
+    - [[#template-literals][Template Literals]]
+    - [[#strict-mode][Strict Mode]]
+    - [[#ecmascript-2015-es6-and-beyond][ECMAScript 2015 (ES6) and beyond]]
+    - [[#asynchronous-javascript][Asynchronous JavaScript]]
+      - [[#asynchronous-programming--callbacks][Asynchronous Programming & Callbacks]]
+      - [[#timers][Timers]]
+      - [[#promises][Promises]]
+      - [[#async-and-await][Async and Await]]
+      - [[#closures][Closures]]
+      - [[#the-event-loop][The Event Loop]]
+- [[#nodejs-design-patterns][Node.js Design Patterns]]
+
+* Preface
+This personal notes on Node.js is split into two parts. First is introductory notes from the [[https://nodejs.org/en][Offician Node.js Documentation]], and the second part is on reading the book [[https://www.amazon.com/Node-js-Design-Patterns-production-grade-applications-ebook/dp/B08CHMDKW2/ref=sr_1_1?crid=3T0EAFE07J6SD&dib=eyJ2IjoiMSJ9.ppsQv55-gHST9PpRlzE7D3RWIsdekBr8sxrCcwB-SayHSIJFfriiVE8I_shuPwgDVK_Xo-4j7VGrQHfbX1A1pIeZ9SYji32m0uKfkuhHQGEO3xweEKOajvuYJWauf_4CSiKXn1pReZI8EChCbl7j8nk3QVxNhdbJLDhKExdF-iIcT-IIQSoaO8-cx2Bgu_rktddJ3dq4iWRg-Oqyei8iTftHY0eYC0vsXBPyvl-BGCs.yusep-qMhuQRuq1ydsvMli3CJXNZFj4zCn5_0AWfLCM&dib_tag=se&keywords=node.js+design+patterns&qid=1744705216&s=digital-text&sprefix=Node.js+de%2Cdigital-text%2C377&sr=1-1][Node.js Design Patterns by Mario Casciaro & Luciano Mammino]].
+
+* Documentation Notes
+
+** Introduction to Node.js
+- Open-source, cross-platform, JavaScript runtime environment.
+- Runs the V8 JavaScript engine outside the browser.
+- Runs on a single process (single threaded) and provides asynchronous I/O primitives that prevents JavaScript code from blocking.
+
+*** Example Node.js Application
+
+#+begin_example javascript
+// server.js
+const { createServer } = require('node:http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World');
+});
+
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
+#+end_example
+
+
+- ~createServer~ method of ~http~ creates a new HTTP server and returns it.
+- The callback function is called when the server is ready.
+
+** What is recommended to learn before diving deep with Node.js?
+
+*** Lexical Structure
+The *lexical structure* of JavaScript defines the basic building blocks of the language -- the syntax rules that describe how characters are combined to form valid code for the interpreter to understand it.
+
+The following are some of the key components of JavaScript's lexical structure:
+
+| Component   | Example           | Notes                            |
+|-------------+-------------------+----------------------------------|
+| Whitespace  | ' ', \t           | Separates tokens                 |
+| Identifiers | myVar, _name, $el | Variables, class names, function |
+| Keywords    | let, if, return   | Reserved words of the language   |
+| Literals    | 42, 'hello', true | Fixed values embedded in code    |
+
+Another component is *Automatic Semicolon Insertion (ASI)*. JavaScript *sometimes* insert semicolons if they are missing.
+
+*** Expressions
+Any valid set of literals, variables, operators, and expressions that *evaluates to a value.*
+
+#+begin_example javascript
+2 + 3;
+true && false;
+myFunction(5);
+#+end_example
+
+*** Data Types
+
+**** Dynamic & Weak Typing
+JavaScript is a dynamic language with dynamic types, meaning variables are not directly associated with any particular value type, and can be assigned (and re-assigned) values of all types.
+
+It is also weakly typed meaning it allows implicit type conversion when an operation involves mismatched types.
+
+#+begin_example javascript
+const foo = 10; // number
+const result = foo + "1"; // string
+console.log(result); // 101
+#+end_example
+
+**** Primitive Values
+Values represented directly at the lowest level of the language.
+
+We can test primitive values with the ~typeof~ operator.
+
+**** Objects
+In JavaScript, objects are the only mutable values. Functions are also objects with the added capability of being callable.
+
+*** Classes
+Classes are a template for creating objects. Classes in JS are built on prototypes but also has syntax and semantics that are unique to classes.
+
+**** Defining Classes
+#+begin_src javascript
+  // Declaration
+  class Rectangle {
+      constructor(height, width) {
+          this.height = height;
+          this.width = width;
+      }
+  }
+
+  // Expression; the class is anonymous but assigned to a variable
+  const Rectangle = class {
+      constructor(height, width) {
+          this.height = height;
+          this.width = width;
+      }
+  };
+
+  // Expression; the class has its own name
+  const Rectangle = class Rectangle2 {
+      constructor(height, width) {
+          this.height = height;
+          this.width = width;
+      }
+  };
+#+end_src
+
+**** Class Body
+Enclosed in ~{}~ where we define class members such as methods or constructor.
+
+A class element can be characterized by three aspects:
+- Kind: Getter, setter, method, or field
+- Location: Static or instance
+- Visibility: Public or private
+
+*** Variables
+
+*** Functions
+
+*** ~this~ Operator
+
+*** Arrow Functions
+
+*** Loops
+
+*** Scopes
+
+*** Arrays
+
+*** Template Literals
+
+*** Strict Mode
+
+*** ECMAScript 2015 (ES6) and beyond
+
+*** Asynchronous JavaScript
+
+**** Asynchronous Programming & Callbacks
+
+**** Timers
+
+**** Promises
+
+**** Async and Await
+
+**** Closures
+
+**** The Event Loop
+* Node.js Design Patterns
+
