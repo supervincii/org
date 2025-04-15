@@ -16,6 +16,7 @@
     - [[#classes][Classes]]
       - [[#defining-classes][Defining Classes]]
       - [[#class-body][Class Body]]
+      - [[#constructor-methods][Constructor, Methods]]
     - [[#variables][Variables]]
     - [[#functions][Functions]]
     - [[#this-operator][~this~ Operator]]
@@ -152,6 +153,42 @@ A class element can be characterized by three aspects:
 - Kind: Getter, setter, method, or field
 - Location: Static or instance
 - Visibility: Public or private
+
+**** Constructor, Methods
+The ~constructor~ is a special method for creating and initializing an object created with a class. It can use the ~super~ keyword to call the constructor of the super class.
+
+Methods are defined on the prototype of each class instance shared by all instances. It can be plain, async, generator, or async generator functions.
+
+#+begin_src javascript
+  class Rectangle {
+      constructor(height, width) {
+          this.height = height;
+          this.width = width;
+      }
+
+      // Getter
+      get area() {
+          return this.calcArea();
+      }
+
+      // Method
+      calcArea() {
+          return this.height * this.width;
+      }
+      
+      // Generator method
+      *getSides() {
+          yield this.height;
+          yield this.width;
+          yield this.height;
+          yield this.width;
+      }
+  }
+
+  const square = new Rectangle(10, 10);
+  console.log(square.area); // 100
+  console.log([...square.getSides()]); // [10, 10, 10, 10]
+#+end_src
 
 *** Variables
 
