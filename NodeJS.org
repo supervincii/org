@@ -16,7 +16,9 @@
     - [[#classes][Classes]]
       - [[#defining-classes][Defining Classes]]
       - [[#class-body][Class Body]]
-      - [[#constructor-methods][Constructor, Methods]]
+      - [[#constructor-and-methods][Constructor and Methods]]
+      - [[#static-methods--fields][Static Methods & Fields]]
+      - [[#inheritance][Inheritance]]
     - [[#variables][Variables]]
     - [[#functions][Functions]]
     - [[#this-operator][~this~ Operator]]
@@ -154,7 +156,7 @@ A class element can be characterized by three aspects:
 - Location: Static or instance
 - Visibility: Public or private
 
-**** Constructor, Methods
+**** Constructor and Methods
 The ~constructor~ is a special method for creating and initializing an object created with a class. It can use the ~super~ keyword to call the constructor of the super class.
 
 Methods are defined on the prototype of each class instance shared by all instances. It can be plain, async, generator, or async generator functions.
@@ -189,6 +191,81 @@ Methods are defined on the prototype of each class instance shared by all instan
   console.log(square.area); // 100
   console.log([...square.getSides()]); // [10, 10, 10, 10]
 #+end_src
+
+**** Static Methods & Fields
+~static~ keyword defines a static method/field for a class. Static methods are often used for utility functions while static fields are useful for caches, fixed configuration, or any other data that doesn't need to be replicated across instances.
+
+Basically, the static method/field of the class *belongs to the class itself, not the instance.*
+
+#+begin_src javascript
+  class Point {
+      constructor(x, y) {
+          this.x = x;
+          this.y = y;
+      }
+
+      static displayName = "Point";
+      static distance(a, b) {
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+
+          return Math.hypot(dx, dy);
+      }
+  }
+
+  const p1 = new Point(5, 5);
+  const p2 = new Point(10, 10);
+  p1.displayName; // undefined
+  p1.distance; // undefined
+  p2.displayName; // undefined
+  p2.distance; // undefined
+
+  console.log(Point.displayName); // "Point"
+  console.log(Point.distance(p1, p2)); // 7.0710678118654755
+#+end_src
+
+Field declarations within classes do not need any keywords. Fields without a default value default to ~undefined~. Also, ~private~ properties use a special identifier syntax so no need for ~public~ and ~private~ keywords.
+
+#+begin_src js
+  class Rectangle {
+      height = 0;
+      #width; // private property
+      constructor(height, width) {
+          this.height = height;
+          this.#width = width;
+      }
+  }
+#+end_src
+
+**** Inheritance
+The ~extends~ keyword is used in class declarations or class expressions to create a class as a child of another constructor
+
+#+begin_src js
+  class Animal {
+      constructor(name) {
+          this.name = name;
+      }
+
+      speak() {
+          console.log(`${this.name} makes a noise.`);
+      }
+  }
+
+  class Dog extends Animal {
+      constructor(name) {
+          super(name); // call the super class constructor and pass in the same parameter
+      }
+
+      speak() {
+          console.log(`${this.name} barks.`);
+      }
+  }
+
+  const d = new Dog("Mitzie");
+  d.speak() // Mitzie barks.
+#+end_src
+
+~super~ should be called first if there is a constructor present in the subclass before using ~this~. The keyword can also be used to call corresponding methods of super class.
 
 *** Variables
 
