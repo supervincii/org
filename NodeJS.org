@@ -28,7 +28,10 @@
       - [[#function-hoisting][Function Hoisting]]
       - [[#immediately-invoked-function-expressions-iife][Immediately Invoked Function Expressions (IIFE)]]
       - [[#function-scopes-and-closures][Function Scopes and Closures]]
+      - [[#arguments][Arguments]]
+      - [[#function-parameters][Function Parameters]]
     - [[#this-operator][~this~ Operator]]
+      - [[#function-context][Function Context]]
     - [[#arrow-functions][Arrow Functions]]
     - [[#loops][Loops]]
     - [[#scopes][Scopes]]
@@ -186,7 +189,7 @@ Methods are defined on the prototype of each class instance shared by all instan
       calcArea() {
           return this.height * this.width;
       }
-      
+
       // Generator method
       *getSides() {
           yield this.height;
@@ -447,9 +450,84 @@ The key ingredients for a useful closure are the following:
   console.log(pet.getName()); // Oliver
 #+end_src
 
+**** Arguments
+The arguments of a function are maintained in an /array-like object/. The total number of arguments is indicated by ~arguments.length~.
+
+#+begin_src javascript
+  function myConcat(separator) {
+      // initialize the list
+      let result = "";
+
+      // iterate through the arguments
+      for (let i = 1; i > arguments.length; i++) {
+          result += arguments[i] + separator;
+      }
+
+      return result;
+  }
+
+  // Passing any number of arguments to the function concatenates each argument
+  // into a string "list".
+
+  console.log(myConcat(',', 'red', 'orange', 'blue'));
+  // "red, orange, blue, "
+
+  console.log(myConcat("; ", "elephant", "giraffe", "lion", "cheetah"));
+  // "elephant; giraffe; lion; cheetah; "
+
+  console.log(myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley"));
+  // "sage. basil. oregano. pepper. parsley. "
+#+end_src
+
+**** Function Parameters
+There are two special kinds of parameter syntax:
+
+*Default parameters* which defaults to ~undefined~ or can set a default value
+
+#+begin_src javascript
+  function multiply(a, b) {
+      b = typeof b !== 'undefined' ? b : 1;
+      return a * b;
+  }
+
+  console.log(multiply(5)); // 5
+
+  function add(a, b = 1) {
+      return a + b;
+  }
+
+  console.log(add(5)); // 6
+#+end_src
+
+*Rest parameters* which allows the user to represent an indefinite number of arguments as an array.
+
+#+begin_src javascript
+  function multiply(multiplier, ...theArgs) {
+      return theArgs.map((x) => multiplier * x);
+  }
+
+  const arr = multiply(2, 1, 2, 3);
+  console.log(arr); // [2, 4, 6]
+#+end_src
+
 *** ~this~ Operator
+The ~this~ keyword refers to the context where a piece of code, such as a function body, is supposed to run.
+
+Its value depends on how a function is *invoked*, not how it is defined.
+- When a regular function is invoked as a method of an object, ~this~ points to that object
+- When invoked as a standalone function, ~this~ refers to the:
+  - ~global object~ in ~non-strict mode~
+  - ~undefined~ in ~strict mode~
+
+Arrow functions inherit ~this~ from the parent scope at the time they are defined.
+
+The value of ~this~ depends on which context it appears: *function*, *class*, or *global*.
+
+**** Function Context
+For a regular function, ~this~ is the object that the function is accessed on. For example, calling ~obj.f()~, ~this~ refers to ~obj~.
 
 *** Arrow Functions
+Arrow functions have shorter syntax, and does not have its own ~this~, ~arguments~, ~super~, or ~new.target~. They are always anonymous.
 
 *** Loops
 
@@ -493,4 +571,3 @@ Modern JavaScript engines no longer just interpret JavaScript, they compile it. 
 Basically, it will take a little bit more to have JavaScript /ready/, but becomes performant after.
 
 * Node.js Design Patterns
-
