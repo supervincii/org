@@ -20,7 +20,14 @@
       - [[#static-methods--fields][Static Methods & Fields]]
       - [[#inheritance][Inheritance]]
     - [[#variables][Variables]]
+      - [[#declaring-variables][Declaring Variables]]
+      - [[#variable-naming-rules][Variable Naming Rules]]
+      - [[#constants][Constants]]
     - [[#functions][Functions]]
+      - [[#defining-functions][Defining Functions]]
+      - [[#function-hoisting][Function Hoisting]]
+      - [[#immediately-invoked-function-expressions-iife][Immediately Invoked Function Expressions (IIFE)]]
+      - [[#function-scopes-and-closures][Function Scopes and Closures]]
     - [[#this-operator][~this~ Operator]]
     - [[#arrow-functions][Arrow Functions]]
     - [[#loops][Loops]]
@@ -268,8 +275,175 @@ The ~extends~ keyword is used in class declarations or class expressions to crea
 ~super~ should be called first if there is a constructor present in the subclass before using ~this~. The keyword can also be used to call corresponding methods of super class.
 
 *** Variables
+Variables are containers for a value.
+
+**** Declaring Variables
+#+begin_src javascript
+  // declaring a variable
+  let myName = "vinci";
+#+end_src
+
+Another way to declare a variable is by using the ~var~ keyword. This is however error prone and works a bit differently with ~let~. The difference are the following:
+- ~var~ makes use of hoisting. Basically allowing declaration of variables after initializing it.
+- ~var~ allows declaring the *same* variable however many times as you like.
+
+**** Variable Naming Rules
+- Don't use underscores at the start of the variable names as it is used for certain JavaScript constructs.
+- Numbers at the start of a variable will cause errors.
+- Use camelCase.
+- Avoid using JavaScript reserved words as variable names.
+
+**** Constants
+We can also declare constants which are like variables except that:
+- we must initialize them when we declare them
+- we can't assign them a new value after initialization
+
+#+begin_src javascript
+  const myName = "vinci";
+#+end_src
 
 *** Functions
+Functions are procedures -- a set of statements that performs a task or calculates a value. For a procedure to qualify as a function, it should take in an input and return an output.
+
+**** Defining Functions
+#+begin_src javascript
+  function square(number) {
+      return number * number;
+  };
+#+end_src
+
+We can also create a function using a function expression.
+#+begin_src javascript
+  const square = function (number) {
+      return number * number;
+  };
+#+end_src
+
+**** Function Hoisting
+#+begin_src javascript
+  console.log(square(5));
+
+  function square(number) {
+      return number * number;
+  }
+#+end_src
+
+The code above runs without any error despite the function being called first before it is declared. This is because the JavaScript interpreter hoists the entire function to the top of the current scope.
+
+Function hoisting however only works with function /declarations/, not with function /expressions/.
+
+**** Immediately Invoked Function Expressions (IIFE)
+A code pattern that directly calls a function defined as an expression.
+
+#+begin_src javascript
+  (function () {
+      // Do something.
+  })();
+
+  const value = (function () {
+     // Do something.
+      return someValue;
+  })();
+#+end_src
+
+It is almost the same as writing the function body with some unique benefits:
+- Creates an extra scope of variables which helps to confine variables to the place where they are useful.
+- Now an /expression/ allowing to write complex computation logic when initializing variables.
+
+**** Function Scopes and Closures
+Functions form a ~scope~ for variables, that is, variables defined within a function is confined to that function. The function scope inherits from all the upper scopes.
+
+#+begin_src javascript
+  // The following variables are defined in the global scope
+  const num1 = 20;
+  const num2 = 3;
+  const name = "Vinci";
+
+  // This function is defined in the global scope
+  function multiply() {
+    return num1 * num2;
+  }
+
+  console.log(multiply()); // 60
+
+  // A nested function example
+  function getScore() {
+    const num1 = 2;
+    const num2 = 3;
+
+    function add() {
+      return `${name} scored ${num1 + num2}`;
+    }
+
+    return add();
+  }
+
+  console.log(getScore()); // "Vinci scored 5"
+#+end_src
+
+We also refer to the function body as a ~closure~. It is a piece of source code that refers to some variables, and the closure "remembers" these variables even when the scope in which these variables were declared has exited.
+
+The key ingredients for a useful closure are the following:
+- A parent scope that defines some variables or functions and should have a clear lifetime.
+- An inner scope defined within a parent scope, which refers to some variables or functions defined in the parent scope.
+- The inner scope manages to survive beyond the lifetime of the parent scope. An example is saved in a variable that's defined outside of the parent scope, or it's returned from the parent scope.
+- Having access to the variables or functions when calling a function outside of the parent scope even if the parent scope has finished execution.
+
+#+begin_src javascript
+  // The outer function defines a variable called "name"
+  const pet = function (name) {
+      const getName = function () {
+          // The inner function has access to the "name" variable outside of the function
+          return name;
+      };
+      // Return the inner function, exposing it to outer scopes
+      return getName;
+  };
+
+  const myPet = pet("Loki");
+  console.log(myPet); // "Loki"
+
+  // ---
+
+  const createPet = function (name) {
+      let sex;
+
+      const pet = {
+          // setName(newName) is equivalent to setName: function (newName)
+          // in this context
+          setName(newName) {
+              name = newName;
+          },
+
+          getName() {
+              return name;
+          },
+
+          getSex() {
+              return sex;
+          },
+
+          setSex(newSex) {
+              if (
+                  typeof newSex === "string" &&
+                      (newSex.toLowerCase() === "male" || newSex.toLowerCase() === "female")
+              ) {
+                  sex = newSex;
+              }
+          },
+      };
+
+      return pet;
+  };
+
+  const pet = createPet("Vivie");
+  console.log(pet.getName()); // Vivie
+
+  pet.setName("Oliver");
+  pet.setSex("male");
+  console.log(pet.getSex()); // male
+  console.log(pet.getName()); // Oliver
+#+end_src
 
 *** ~this~ Operator
 
