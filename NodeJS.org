@@ -43,6 +43,8 @@
       - [[#async-and-await][Async and Await]]
       - [[#closures][Closures]]
       - [[#the-event-loop][The Event Loop]]
+  - [[#nodejs-vs-browser][Node.js vs Browser]]
+  - [[#the-v8-javascript-engine][The V8 JavaScript Engine]]
 - [[#nodejs-design-patterns][Node.js Design Patterns]]
 
 * Preface
@@ -474,5 +476,21 @@ The key ingredients for a useful closure are the following:
 **** Closures
 
 **** The Event Loop
+
+** Node.js vs Browser
+| Node.js                                | Browser                                     |
+|----------------------------------------+---------------------------------------------|
+| No DOM interaction                     | DOM interaction                             |
+| Has more modules for nicer APIs        | Doesn't have all the nice APIs              |
+| Can control the environment            | Cannot control which browser users will use |
+| Support CommonJS and ES module systems | Limited to ES modules (~import~)             |
+
+** The V8 JavaScript Engine
+V8 is the JavaScript engine that powers Google Chrome and what takes in JavaScript and executes it while browsing with Chrome.
+
+Modern JavaScript engines no longer just interpret JavaScript, they compile it. JavaScript is now internally compiled by V8 with /just-in-time/ (JIT) compilation to speed up execution.
+
+Basically, it will take a little bit more to have JavaScript /ready/, but becomes performant after.
+
 * Node.js Design Patterns
 
