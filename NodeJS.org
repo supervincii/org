@@ -32,6 +32,10 @@
       - [[#function-parameters][Function Parameters]]
     - [[#this-operator][~this~ Operator]]
       - [[#function-context][Function Context]]
+      - [[#callbacks][Callbacks]]
+      - [[#arrow-function-callback][Arrow Function Callback]]
+      - [[#constructor-functions][Constructor Functions]]
+      - [[#es6-classes-and-super][ES6 Classes and ~super~]]
     - [[#arrow-functions][Arrow Functions]]
     - [[#loops][Loops]]
     - [[#scopes][Scopes]]
@@ -433,7 +437,7 @@ The key ingredients for a useful closure are the following:
                   typeof newSex === "string" &&
                       (newSex.toLowerCase() === "male" || newSex.toLowerCase() === "female")
               ) {
-                  sex = newSex;
+                  sex = nehwSex;
               }
           },
       };
@@ -525,6 +529,83 @@ The value of ~this~ depends on which context it appears: *function*, *class*, or
 
 **** Function Context
 For a regular function, ~this~ is the object that the function is accessed on. For example, calling ~obj.f()~, ~this~ refers to ~obj~.
+
+**** Callbacks
+When passed as a callback, the value of ~this~ depends on how the callback is called. A plain callback loses the original ~this~ unless you bind it.
+
+#+begin_src javascript
+  const counter = {
+      count: 0,
+      increase() {
+          this.count++;
+          console.log(this.count);
+      }
+  };
+
+  setTimeout(counter.increase, 100);
+  // Logs NaN or error, because `this` is lost (defaults to original or undefined)
+#+end_src
+
+**** Arrow Function Callback
+Inherits ~this~ from the surrounding scope, preserving ~counter~ as expected.
+
+#+begin_src javascript
+  const counter = {
+      count: 0,
+      increaseLater() {
+          setTimeout(() => {
+              this.count++;
+              console.log(this.count);
+          }, 100);
+      }
+  };
+
+  counter.increaseLater(); // 1
+#+end_src
+
+**** Constructor Functions
+Using ~new~ sets ~this~ to the newly created object.
+
+#+begin_src javascript
+  function Person(name) {
+      this.name = name;
+  }
+
+  const bob = new Person('Bob');
+  console.log(bob.name); // 'Bob'
+#+end_src
+
+**** ES6 Classes and ~super~
+In ES6 classes, ~this~ in the constructor is the new instance. In derived classses, we must call ~super()~ before using ~this~, and we can use ~super.method()~ to invoke parent methods.
+
+#+begin_src javascript
+  class Animal {
+      constructor(name) {
+          this.name = name;
+      }
+
+      speak() {
+          console.log(`${this.name} makes a noise.`);
+      }
+  }
+
+  class Dog extends Animal {
+      constructor(name) {
+          super(name);
+          this.breed = 'Mixed';
+      }
+
+      speak() {
+          super.speak();
+          console.log(`${this.name} barks.`);
+      }
+  }
+
+  const d = new Dog('Rex');
+  d.speak();
+  // "Rex makes a noise."
+  // "Rex barks."
+#+end_src
 
 *** Arrow Functions
 Arrow functions have shorter syntax, and does not have its own ~this~, ~arguments~, ~super~, or ~new.target~. They are always anonymous.
