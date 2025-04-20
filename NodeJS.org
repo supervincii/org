@@ -38,6 +38,12 @@
       - [[#es6-classes-and-super][ES6 Classes and ~super~]]
     - [[#arrow-functions][Arrow Functions]]
     - [[#loops][Loops]]
+      - [[#for-statement][~for~ Statement]]
+      - [[#dowhile-statement][~do...while~ Statement]]
+      - [[#while-statement][~while~ Statement]]
+      - [[#labeled-statement][labeled Statement]]
+      - [[#break-statement][~break~ Statement]]
+      - [[#continue-statement][~continue~ Statement]]
     - [[#scopes][Scopes]]
     - [[#arrays][Arrays]]
     - [[#template-literals][Template Literals]]
@@ -608,9 +614,109 @@ In ES6 classes, ~this~ in the constructor is the new instance. In derived classs
 #+end_src
 
 *** Arrow Functions
-Arrow functions have shorter syntax, and does not have its own ~this~, ~arguments~, ~super~, or ~new.target~. They are always anonymous.
+Arrow functions have shorter syntax, and does not have its own ~this~, ~arguments~, ~super~, or ~new.target~. They are always anonymous. They also cannot be used as constructors and cannot use ~yield~.
 
 *** Loops
+Loops offer a quick and easy way to do something repeatedly.
+
+**** ~for~ Statement
+A ~for~ loop repeats until a specified condition evaluates to false.
+
+#+begin_src javascript
+  for (initialization; condition; afterthought) {
+      statement
+  }
+#+end_src
+
+**** ~do...while~ Statement
+Repeats until a specified condition evaluates to false.
+
+#+begin_src javascript
+  do
+      statement
+  while (condition);
+#+end_src
+
+The ~statement~ is always executed once before the condition is checked.
+
+**** ~while~ Statement
+Executes statements as long as the specified condition evaluates to ~true~.
+
+#+begin_src javascript
+  while (condition) {
+      statement
+  }
+#+end_src
+
+**** labeled Statement
+A ~label~ provides a statement with an identifier that lets you refer to it elsewhere in your program. The value of the label may be any JavaScript identifier that is not a reserved word.
+
+#+begin_src javascript
+  label:
+      statement
+#+end_src
+
+**** ~break~ Statement
+Used to terminate a loop, ~switch~, or in conjunction with a labeled statement.
+
+- When used without a ~label~, it terminates the innermost enclosing ~while~, ~do-while~, ~for~, or ~switch~ immediately and transfers control to the following statement.
+- When used with a ~label~, it terminates the specified label statement.
+
+#+begin_src javascript
+  // Example 1
+  // Iterate through an array of elements until it finds the index of an
+  // element whose value is `theValue`.
+  for (let i = 0; i < a.length; i++) {
+      if (a[i] === theValue) {
+          break;
+      }
+  }
+
+  // Example 2
+  // Breaking to a label
+  let x = 0;
+  let z = 0;
+
+  labelCancelLoops: while (true) {
+      console.log('Outer loops:', x);
+      x += 1;
+      z = 1;
+      while (true) {
+          console.log('Inner loops:', z);
+          z += 1;
+          if (z === 10 && x === 10) {
+              break labelCancelLoops;
+          } else if (z === 10) {
+              break;
+          }
+      }
+  }
+#+end_src
+
+**** ~continue~ Statement
+Can be used to restart a ~while~, ~do-while~, ~for~ or ~label~ statement. ~continue~ does not terminate the execution of the loop. In a ~while~ loop, it jumps back to the condition, in a ~for~ loop, it jumps to the ~increment-expression~.
+
+- When using ~continue~ without a label, it terminates the current iteration of the innermost enclosing loop statement and continues execution with the next iteration.
+- When used with a label, it applies to the looping statement identified with that label.
+
+#+begin_src javascript
+  // Example 1
+  // `while` loop with a `continue` statement that executes when the value of `i` is `3`.
+
+  let i = 0;
+  let n = 0;
+  while (i < 5) {
+      i++;
+      if (i === 3) {
+          continue;
+      }
+      n += i;
+      console.log(n);
+  }
+
+  //  Logs:
+  // 1 3 7 12
+#+end_src
 
 *** Scopes
 
