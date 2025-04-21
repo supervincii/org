@@ -44,6 +44,7 @@
       - [[#labeled-statement][labeled Statement]]
       - [[#break-statement][~break~ Statement]]
       - [[#continue-statement][~continue~ Statement]]
+      - [[#for-in-statement][~for-in~ Statement]]
     - [[#scopes][Scopes]]
     - [[#arrays][Arrays]]
     - [[#template-literals][Template Literals]]
@@ -716,6 +717,20 @@ Can be used to restart a ~while~, ~do-while~, ~for~ or ~label~ statement. ~conti
 
   //  Logs:
   // 1 3 7 12
+#+end_src
+
+**** ~for-in~ Statement
+Iterates a specified variable over all the enumerable properties of an object.
+
+#+begin_src javascript
+  function dumpProps(obj, objName) {
+      let result = "";
+      for (const i in obj) {
+          result += `${objName}.${i} = ${obj[i]}<br>`;
+      }
+      result += "<hr>";
+      return result;
+  }
 #+end_src
 
 *** Scopes
