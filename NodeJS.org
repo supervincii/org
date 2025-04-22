@@ -45,10 +45,12 @@
       - [[#break-statement][~break~ Statement]]
       - [[#continue-statement][~continue~ Statement]]
       - [[#for-in-statement][~for-in~ Statement]]
+      - [[#for-of-statement][~for-of~ Statement]]
     - [[#scopes][Scopes]]
     - [[#arrays][Arrays]]
     - [[#template-literals][Template Literals]]
     - [[#strict-mode][Strict Mode]]
+      - [[#invoking-strict-mode][Invoking Strict Mode]]
     - [[#ecmascript-2015-es6-and-beyond][ECMAScript 2015 (ES6) and beyond]]
     - [[#asynchronous-javascript][Asynchronous JavaScript]]
       - [[#asynchronous-programming--callbacks][Asynchronous Programming & Callbacks]]
@@ -733,13 +735,84 @@ Iterates a specified variable over all the enumerable properties of an object.
   }
 #+end_src
 
+**** ~for-of~ Statement
+Creates a loop iterating over iterable objects(including Array, Map, Set, arguments, etc), invoking a custom iteration hook with statements to be executed for the value of each distinct property.
+
+#+begin_src javascript
+  const arr = [3, 5, 7];
+  arr.foo = "hello";
+
+  for (const i in arr) {
+      console.log(i);
+  }
+  // "0" "1" "2" "foo"
+
+  for (const i of arr) {
+      console.log(i);
+  }
+  // Logs: 3 5 7
+#+end_src
+
+Both ~for-of~ and ~for-in~ can be used for destructuring.
+
+#+begin_src javascript
+  const obj = { foo: 1, bar: 2}
+
+  for (const [key, val] of Object.entries(obj)) {
+      console.log(key, val);
+  }
+
+  // "foo" 1
+  // "bar" 2
+#+end_src
+
 *** Scopes
+The *scope* is the current context of execution in which the values and expressions are "visible" or can be referenced.
+
+Kinds of scopes:
+- *Global scope*: The default scope for all code running in script mode.
+- *Module scope*: The scope for code running in module mode.
+- *Function scope*: The scope created with a function.
+- *Block scope*: The scope created with a pair of curly braces. Identifiers like ~let~, ~const~, ~class~, or (in strict mode) ~function~ can belong to this scope.
 
 *** Arrays
+An object that enables storing a collection of multiple items under a single variable name. If JavaScript, arrays are not primitives, but objects with the following characteristics:
+- *Resizable and can contain a mix of different data types.*
+- *Not associative arrays*. Array elements cannot be accessed using arbitrary strings as indexes but must be accessed using non-negative integers as indexes.
+- *Zero indexed*.
+- *Array copy operations create shallow copies*. Basically, changes to the copy for primitives won't change the original but changes to nested objects/arrays will affect both the copy and the original.
 
 *** Template Literals
 
 *** Strict Mode
+Strict mode is a way to opt in to a /restricted variant of JavaScript/. It has different semantics from normal code namely:
+- Eliminates some JavaScript silent errors by changing them to throw errors.
+- Fixes mistakes that make it difficult for JavaScript engines to perform optimizations. Strict mode sometimes can be made to run faster than identical code that's not in strict mode.
+- Prohibits some syntax likely to be defined in future versions of ECMAScript.
+
+**** Invoking Strict Mode
+Strict mode applies to /entire scripts/ or /individual functions/.
+
+#+begin_src javascript
+  // Whole script strict mode syntax
+  "use strict";
+  const v = "I am in strict mode!";
+#+end_src
+
+#+begin_src javascript
+  function myStrictModeFunction() {
+      // Function level strict mode syntax
+      "use strict";
+      function nested() {
+          return "And so am I!";
+      }
+      return `Hi! I am a strict function! ${nested}`;
+  }
+
+  function myNotStrictFunction() {
+      return "I am not strict.";
+  }
+#+end_src
 
 *** ECMAScript 2015 (ES6) and beyond
 
