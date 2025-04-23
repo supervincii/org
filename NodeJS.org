@@ -6,7 +6,7 @@
 - [[#documentation-notes][Documentation Notes]]
   - [[#introduction-to-nodejs][Introduction to Node.js]]
     - [[#example-nodejs-application][Example Node.js Application]]
-  - [[#what-is-recommended-to-learn-before-diving-deep-with-nodejs][What is recommended to learn before diving deep with Node.js?]]
+  - [[#javascript-concepts][JavaScript Concepts]]
     - [[#lexical-structure][Lexical Structure]]
     - [[#expressions][Expressions]]
     - [[#data-types][Data Types]]
@@ -52,13 +52,12 @@
     - [[#strict-mode][Strict Mode]]
       - [[#invoking-strict-mode][Invoking Strict Mode]]
     - [[#ecmascript-2015-es6-and-beyond][ECMAScript 2015 (ES6) and beyond]]
-    - [[#asynchronous-javascript][Asynchronous JavaScript]]
-      - [[#asynchronous-programming--callbacks][Asynchronous Programming & Callbacks]]
-      - [[#timers][Timers]]
-      - [[#promises][Promises]]
-      - [[#async-and-await][Async and Await]]
-      - [[#closures][Closures]]
-      - [[#the-event-loop][The Event Loop]]
+  - [[#asynchronous-javascript][Asynchronous JavaScript]]
+    - [[#timers][Timers]]
+    - [[#promises][Promises]]
+    - [[#async-and-await][Async and Await]]
+    - [[#closures][Closures]]
+    - [[#the-event-loop][The Event Loop]]
   - [[#nodejs-vs-browser][Node.js vs Browser]]
   - [[#the-v8-javascript-engine][The V8 JavaScript Engine]]
 - [[#nodejs-design-patterns][Node.js Design Patterns]]
@@ -97,7 +96,7 @@ server.listen(port, hostname, () => {
 - ~createServer~ method of ~http~ creates a new HTTP server and returns it.
 - The callback function is called when the server is ready.
 
-** What is recommended to learn before diving deep with Node.js?
+** JavaScript Concepts
 
 *** Lexical Structure
 The *lexical structure* of JavaScript defines the basic building blocks of the language -- the syntax rules that describe how characters are combined to form valid code for the interpreter to understand it.
@@ -816,19 +815,23 @@ Strict mode applies to /entire scripts/ or /individual functions/.
 
 *** ECMAScript 2015 (ES6) and beyond
 
-*** Asynchronous JavaScript
+** Asynchronous JavaScript
+Asynchronous programming is a technique that enables your program to start a potentially long running task and *still be responsive to other events while running that task* rather than waiting for that task to finish.
 
-**** Asynchronous Programming & Callbacks
+Some functions that can potentially take a long time and therefore are asynchronous are:
+- HTTP requests using ~fetch()~
+- Accessing a user's camera or microphone using ~getUserMedia()~
+- Asking a user to select files using ~showOpenFilePicker()~
 
-**** Timers
+*** Timers
 
-**** Promises
+*** Promises
 
-**** Async and Await
+*** Async and Await
 
-**** Closures
+*** Closures
 
-**** The Event Loop
+*** The Event Loop
 
 ** Node.js vs Browser
 | Node.js                                | Browser                                     |
