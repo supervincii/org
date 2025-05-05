@@ -1,0 +1,48 @@
+#+TITLE: Career Plan
+
+* JavaScript & Node.js Foundations
+
+** Resources
+- *Primary:* Node.js Design Patterns
+- *Supporting:*
+  - JavaScript: The Good Parts by Douglas Crockford
+  - Effective JavaScript by David Herman
+
+** Projects
+1. Privacy-Focused Travel Journal API
+   - Build a RESTFul API with Express.js
+   - Implement token based authentication with privacy controls
+   - Store encrypted itineraries that can only be private or selectively shared
+   - Add location-based search with privacy considerations
+   - Include testing with Jest/Mocha ([[https://testautomationu.applitools.com/learningpaths.html?id=javascript-api-path][TAU JS API Path]])
+2. Database Integration
+   - Connect your application to BOTH SQL and NoSQL databases
+   - Implement data anonymization for sensitive location data
+   - Create migration scripts for evolving travel content schema
+   - Build query optimization for location-based searches
+   - Add audit logging for security and privacy compliance
+
+* Search Relevancy & Data Processing
+
+** Resources
+- *Primary:* Relevant Search by Doug Turnbull & John Berryman
+- *Supporting:*
+  - Stream Processing with Apache Kafka by Julian Hyde
+  - Data Pipelines Pocket Reference by James Densmore
+- *Technical Papers:*
+  - Privacy-Preserving Search of Similar Patients in Genomic Data (For privacy techniques)
+  - Differential Privacy and Applications (Anonymization techniques)
+
+** Projects
+1. Travel Content Search Engine
+   - Build an inverted index for travel blog posts and itineraries
+   - Implement relevance scoring for destination and activity searches
+   - Create privacy-preserving query logs for personalized recommendations
+   - Add features for autocomplete & destination suggestions
+   - Implement location-aware caching for performance
+2. Travel Content Processing Pipeline
+   - Build a system to process and categorize travel blog content
+   - Implement stream processing with Kafka or RabbitMQ for real-time updates
+   - Create privacy filters to remove personally identifiable information from shared itineraries
+   - Design a scheduler for destination trending analysis
+   - Add monitoring for content moderation and privacy compliance
