@@ -1,0 +1,99 @@
+#+TITLE: System Design Study
+
+* Table of Contents :toc@4:
+- [[#chapter-1---proximity-service][Chapter 1 - Proximity Service]]
+  - [[#step-1---understand-the-problem-and-establish-design-scope][Step 1 - Understand the Problem and Establish Design Scope]]
+    - [[#functional-requirements][Functional requirements]]
+    - [[#non-functional-requirements][Non-functional requirements:]]
+    - [[#estimation][Estimation]]
+  - [[#step-2---propose-high-level-design-and-get-buy-in][Step 2 - Propose High-level Design and Get Buy-in]]
+    - [[#api-design][API Design]]
+    - [[#data-model][Data Model]]
+    - [[#high-level-design][High-Level Design]]
+
+* Chapter 1 - Proximity Service
+A proximity service is used to discover nearby place such as restaurants, hotels, theaters, museums, etc. It is a core component for something like Yelp which uses this service to find the best restaurants nearbly.
+
+** Step 1 - Understand the Problem and Establish Design Scope
+Yelp for example, supports many features so it is not feasible to design all of them in an interview session. It is important to narrow down the scope by asking questions.
+
+Assumptions:
+
+*** Functional requirements
+- Return all businesses based on a user's location (latitude & longitude pair) and radius.
+- Business owners can add, delete, or update a business, but this information doesn't need to be reflected in real-time.
+- Customers can view detailed information about a business.
+
+*** Non-functional requirements:
+- Low latency. Users should be able to see nearby businesses quickly.
+- Data privacy. Location info is sensitive data. When we design a location-based service (LBS), we should always take user privacy into consideration. We need to comply with data privacy laws like /General Data Protection Regulation/ (GDPR) and /California Consumer Privacy Act/ (CCPA), etc.
+- High availability and scalability requirements. We should ensure our system can handle the spike in traffic during peak hours in densely populated areas.
+
+*** Estimation
+- 100 million daily active users
+- 200 million businesses
+- 10^5 seconds in a day
+- User makes 5 search queries per day
+- 5000 queries per second
+
+** Step 2 - Propose High-level Design and Get Buy-in
+
+*** API Design
+We use RESTful API convention to design a simplified version of the APIs.
+
+~GET /v1/search/nearby~
+
+This endpoint returns businesses based on certain search criteria.
+
+Request Parameters:
+
+| Field     | Description                      | Type    |
+|-----------+----------------------------------+---------|
+| latitude  | Latitude of a given location     | decimal |
+| longitude | Longitude of a given location    | decimal |
+| radius    | Optional. Default is 5000 meters | int     |
+
+Response Body:
+#+begin_src javascript
+  {
+      "total": 10,
+      "businesses": [{business object}]
+  }
+#+end_src
+
+The business object contains everything needed to render the search results page. Additional attributes such as pictures, reviews, star rating, etc., might still be needed to render the business detail page. Therefore, a new endpoint call is required to fetch the detailed information of a business when a user clicks on the business detail page.
+
+| API                        | Detail                                       |
+|----------------------------+----------------------------------------------|
+| ~GET /v1/businesses/id~    | Return detailed information about a business |
+| ~POST /v1/businesses~      | Add a business                               |
+| ~PUT /v1/businesses/id~    | Update details of a business                 |
+| ~DELETE /v1/businesses/id~ | Delete a business                            |
+
+*** Data Model
+Read volume is high because the following two features are very commonly used:
+- Search for nearbly businesses
+- View the detailed information
+
+Write volume is low because adding, removing, and editing business info are infrequent operations.
+
+A relational database can be a good fit for a read-heavy system.
+
+For the data schema, the key database tables are the business table and the geospatial index table.
+
+The business table contains detailed information about the business.
+
+| business    |
+|-------------|
+| business_id |
+| address     |
+| city        |
+| state       |
+| country     |
+| latitude    |
+| longitude   |
+
+A geo index table is used for the efficient processing of spatial operations.
+
+*** High-Level Design
+[[./System-Design-Assets/Proximity-Service-High-Level-Design.png]]

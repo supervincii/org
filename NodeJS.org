@@ -971,6 +971,7 @@ For these reasons, most modern asynchronous APIs don't use callbacks. Instead ~P
 *** Timers
 
 *** Promises
+A promise is an object returned by an asynchronous function which represents the state of the current operation.
 
 *** Async and Await
 
