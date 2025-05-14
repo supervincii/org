@@ -1,0 +1,19 @@
+#+TITLE: Mobile Application Development Process
+#+DESCRIPTION: Development process and setup for creating a mobile application using React Native
+
+* Installation
+#+begin_src shell
+  npx create-expo-app@latest --template blank ./
+#+end_src
+
+The command creates an expo application with a blank template, without other stuff like routers. The ~./~ basically creates the project within the same directory the command is run on.
+
+* Expo Router
+Installing dependencies:
+#+begin_src shell
+  npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar
+#+end_src
+
+Configuring other files like ~package.json~ and ~app.json~:
+[[https://docs.expo.dev/router/installation/#manual-installation][Expo Manual Installation]]
+
