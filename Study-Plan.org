@@ -1,6 +1,18 @@
 #+TITLE: Millionaire Career Plan
 #+DESCRIPTION: The ultimate career plan curated for me, the one and only, Vinci.
 
+* Table of Contents :toc:
+- [[#q1-fundamentals--c-programming][Q1: Fundamentals & C Programming]]
+  - [[#c-basics-and-computer-architecture-introduction][C Basics and Computer Architecture Introduction]]
+  - [[#computer-architecture--memory-management][Computer Architecture & Memory Management]]
+  - [[#operating-systems-fundamentals][Operating Systems Fundamentals]]
+  - [[#file-systems-and-io][File Systems and I/O]]
+  - [[#basic-data-structures-implementation][Basic Data Structures Implementation]]
+  - [[#algorithm-implementation-and-analysis][Algorithm Implementation and Analysis]]
+- [[#q2-advanced-c-programming--backend-fundamentals][Q2: Advanced C Programming & Backend Fundamentals]]
+  - [[#socket-programming-and-networking][Socket Programming and Networking]]
+  - [[#advanced-concurrency-patterns][Advanced Concurrency Patterns]]
+
 * Q1: Fundamentals & C Programming
 
 ** C Basics and Computer Architecture Introduction
@@ -135,3 +147,47 @@ Output: Visual representation of the search process and resulting path
 * Q2: Advanced C Programming & Backend Fundamentals
 
 ** Socket Programming and Networking
+
+*** Resources
+- Unix Network Programming by W. Richard Stevens
+- Beej's Guide to Network Programming
+
+*** Project: HTTP Server in C
+Build a simple but functional HTTP server from scratch.
+
+Requirements:
+- Handle basic HTTP methods (GET, HEAD, POST)
+- Serve static files from a specified directory
+- Implement proper HTTP response codes and headers
+- Support concurrent connections using either multi-processing or multi-threading
+- Include detailed request logging
+- Support common MIME types
+- Implement request timeout handling
+- Add security features (directory traversal prevention, request size limiting)
+- Support basic configuration (port, document root, log file)
+- Implement simple caching for static content
+
+Input: HTTP requests received on a configured port
+Output: HTTP responses with appropriate headers and content
+
+** Advanced Concurrency Patterns
+
+*** Resources
+- The Art of Multiprocessor Programming by Maurice Herlihy and Nir Shavit
+- C Concurrency in Action
+
+*** Project: Thread Pool and Task Scheduler in C
+Create a thread pool implementation with task scheduling system
+
+Requirements:
+- Implement a configurable thread pool with worker threads
+- Create a task queue for pending work items
+- Support task priorities and dependencies
+- Implement thread synchronization using mutexes and condition variables
+- Add cancellation and timeout support for tasks
+- Include deadlock detection or prevention mechanisms
+- Provide statistical monitoring (throughput, latency, queue length)
+- Implement graceful shutdown
+
+Input: Task submission API calls
+Output: Task execution results and performance metrics
