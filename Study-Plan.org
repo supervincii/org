@@ -2,192 +2,188 @@
 #+DESCRIPTION: The ultimate career plan curated for me, the one and only, Vinci.
 
 * Table of Contents :toc:
-- [[#q1-fundamentals--c-programming][Q1: Fundamentals & C Programming]]
-  - [[#c-basics-and-computer-architecture-introduction][C Basics and Computer Architecture Introduction]]
-  - [[#computer-architecture--memory-management][Computer Architecture & Memory Management]]
-  - [[#operating-systems-fundamentals][Operating Systems Fundamentals]]
-  - [[#file-systems-and-io][File Systems and I/O]]
-  - [[#basic-data-structures-implementation][Basic Data Structures Implementation]]
-  - [[#algorithm-implementation-and-analysis][Algorithm Implementation and Analysis]]
-- [[#q2-advanced-c-programming--backend-fundamentals][Q2: Advanced C Programming & Backend Fundamentals]]
-  - [[#socket-programming-and-networking][Socket Programming and Networking]]
-  - [[#advanced-concurrency-patterns][Advanced Concurrency Patterns]]
+- [[#phase-1-building-strong-foundations][Phase 1: Building Strong Foundations]]
+  - [[#computer-systems--c-programming-fundamentals][Computer Systems & C Programming Fundamentals]]
+  - [[#data-structures--algorithm-analysis][Data Structures & Algorithm Analysis]]
+  - [[#advanced-data-structures--graph-algorithms][Advanced Data Structures & Graph Algorithms]]
+  - [[#memory-management--system-calls][Memory Management & System Calls]]
+  - [[#phase-1-capstone-project][Phase 1 Capstone Project]]
+- [[#phase-2-systems-deep-dive][Phase 2: Systems Deep Dive]]
+  - [[#network-programming--distributed-concepts][Network Programming & Distributed Concepts]]
+  - [[#database-systems--storage][Database Systems & Storage]]
+  - [[#compilers--language-implementation][Compilers & Language Implementation]]
+  - [[#phase-2-capstone-project][Phase 2 Capstone Project]]
+- [[#phase-3-advanced-system--specialization][Phase 3: Advanced System & Specialization]]
+  - [[#advanced-c--system-programming][Advanced C & System Programming]]
+  - [[#go-programming--concurrent-systems][Go Programming & Concurrent Systems]]
+  - [[#backend-engineering--architecture][Backend Engineering & Architecture]]
+  - [[#interview-preparation][Interview Preparation]]
+  - [[#capstone-project][Capstone Project]]
 
-* Q1: Fundamentals & C Programming
+* Phase 1: Building Strong Foundations
 
-** C Basics and Computer Architecture Introduction
+** Computer Systems & C Programming Fundamentals
 
 *** Resources
 - C Programming: A Modern Approach by K.N. King
-- Computer Systems: A Programmer's Perspective by Bryant and O'Hallaron
+- Computer Systems: A Programmer's Perspective by Bryant and O'Hallaron (Chapters 1-3)
   
-*** Project: Memory Visualizer in C
-Create a tool that visualizes how data is stored in memory.
+*** Projects
+- Create a basic text file processor that counts words, lines, and characters.
+- Implement bit manipulation utilities (set, clear, toggle bits).
+- Build a simple calculator in C that handles integer and floating point arithmetic.
 
-Requirements:
-- Implement functions to allocate various data types (int, char, float, arrays, structs).
-- Display memory addresses and content in a formatted, readable way.
-- Show how complex structures are laid out in memory.
-- Visualize stack vs heap allocation
-- Demonstrate pointer arithmetic and its effects.
-- Include documentation explaining memory concepts illustrated by the tool.
-  
-Input: Function calls to allocate and manipulate data.
-Output: Visual representation of memory layout with addresses and content.
-
-** Computer Architecture & Memory Management 
+** Data Structures & Algorithm Analysis
 
 *** Resources
-- Continue with CS:APP
-- Understanding and Using C Pointers by Richard Reese
-
-*** Project: CPU Simulator in C
-Build a program that simulates the execution of a simplified instruction set architecture.
-
-Requirements:
-- Implement a register file with at least 8 general-purpose registers.
-- Support basic operations: ADD, SUB, LOAD, STORE, JUMP, BRANCH.
-- Include a program counter and instruction memory.
-- Support sequential execution of a program loaded from a file.
-- Implement memory addressing modes (direct, indirect, indexed).
-- Provide debugging features showing register state after each instruction.
-- Handle basic error conditions (invalid opcodes, memory access violations).
-
-Input: Assembly-like text file with instructions.
-Output: Register state after each instruction execution and final memory state.
-
-** Operating Systems Fundamentals
-
-*** Resources
-- Operating Systems: Three Easy Pieces by Remzi H. Arpaci-Dusseau
-- The Linux Programming Interface
-
-*** Project: Command-line Shell in C
-Create a shell that can execute commands and manage processes
-
-Requirements:
-- Support executing external programs with fork() and exec()
-- Implement built-in commands: cd, pwd, echo, exit, history
-- Handle input/output redirection (>, <, >>)
-- Support pipes (|) to connect multiple commands
-- Implement background process execution with &
-- Manage a history of executed commands with recall functionality
-- Handle signals (Ctrl+C, Ctrl+Z) appropriately
-- Implement proper error handling and reporting
-
-Input: User-entered command lines.
-Output: Execution results of commands and appropriate shell prompts.
-
-** File Systems and I/O
-
-*** Resources
-- Continue with OSTEP
-- Advanced Programming in the UNIX Environment by W. Richard Stevens
-
-*** Project: Virtual File System in C
-Implement a simplified file system that supports basic file operations.
-
-Requirements:
-- Create an in-memory file system with directories and files
-- Support operations: create, delete, read, write, list, move
-- Implement proper file descriptors and file table
-- Add basic permission system (read/write/execute)
-- Support file metadata (creation time, modification time, size)
-- Implement persistent storage by saving to a disk file
-- Include error handling for common file system errors
-- Add simple journaling for crash recovery
-
-Input: File system operation commands
-Output: Operation results and file system state
-
-** Basic Data Structures Implementation
-
-*** Resources
-- Mastering Algorithms with C by Kyle Loudon
-- Algorithms in C by Robert Sedgewick
-
-*** Project: Data Structures Library in C
-Build a comprehensive library of fundamental data structures with testing.
-
-Requirements:
-- Implement: Linked list (singly and doubly linked), Stack, Queue, Binary search tree, Hash table
-- Each structure should support standard operations (insert, delete, search)
-- Design a consistent API across all data structures
-- Implement generic versions using void pointers and function pointers for comparisons
-- Include memory management (proper allocation/deallocation)
-- Write comprehensive test cases for each data structure
-- Document the time and space complexity of each operation
-- Implement serialization/deserialization for persistent storage
-
-Input: Library API calls
-Output: Operation results and structure state
-
-** Algorithm Implementation and Analysis
-
-*** Resources
-- Introduction to Algorithms by CLRS
 - The Algorithm Design Manual by Steven Skiena
+- Data Structures and Algorithm Analysis in C
 
-*** Project: Pathfinding Visualization in C
-Create a tool that visualizes different pathfinding algorithms.
+*** Projects
+- Build a generic dynamic array library in C with proper memory management.
+- Implement a hash table with chaining and open addressing.
+- Create a binary search tree with insertion, deletion, and traversal operations.
+- Build a simple expression evaluator using stacks.
 
-Requirements:
-- Implement BFS, DFS, Dijkstra's algorithm, and A* search
-- Create a grid-based environment with obstacles
-- Visualize the search process showing explored nodes (using a simple text-based or basic graphical output)
-- Allow users to place start, end points, and obstacles
-- Calculate and display performance metrics (nodes explored, path length, time)
-- Support different heuristics for A*
-- Implement a map file format for saving and loading grid configurations
-- Compare algorithm performance across different scenarios
-
-Input: Grid configurations and algorithm selection
-Output: Visual representation of the search process and resulting path
-
-* Q2: Advanced C Programming & Backend Fundamentals
-
-** Socket Programming and Networking
+** Advanced Data Structures & Graph Algorithms
 
 *** Resources
-- Unix Network Programming by W. Richard Stevens
-- Beej's Guide to Network Programming
+- The Algorithm Design Manual by Steven Skiena
+- Algorithms by Sedgewick & Wayne (Graph sections)
 
-*** Project: HTTP Server in C
-Build a simple but functional HTTP server from scratch.
+*** Projects
+- Implement a priority queue using binary heap.
+- Build a graph library with adjacency list and matrix representations.
+- Create a shortest path finder for a simple map/maze.
+- Develop a basic task scheduler using priority queues.
 
-Requirements:
-- Handle basic HTTP methods (GET, HEAD, POST)
-- Serve static files from a specified directory
-- Implement proper HTTP response codes and headers
-- Support concurrent connections using either multi-processing or multi-threading
-- Include detailed request logging
-- Support common MIME types
-- Implement request timeout handling
-- Add security features (directory traversal prevention, request size limiting)
-- Support basic configuration (port, document root, log file)
-- Implement simple caching for static content
-
-Input: HTTP requests received on a configured port
-Output: HTTP responses with appropriate headers and content
-
-** Advanced Concurrency Patterns
+** Memory Management & System Calls
 
 *** Resources
-- The Art of Multiprocessor Programming by Maurice Herlihy and Nir Shavit
-- C Concurrency in Action
+- Advanced Programming in the UNIX Environment by W. Richard Stevens
+- CS: APP (Chapters 4-6)
 
-*** Project: Thread Pool and Task Scheduler in C
-Create a thread pool implementation with task scheduling system
+*** Projects
+- Build a custom memory allocator (simple version)
+- Create a basic shell that can execute commands and handle pipes.
+- Implement a file compression utility using Huffman coding.
+- Develop a simple process monitoring tool.
 
-Requirements:
-- Implement a configurable thread pool with worker threads
-- Create a task queue for pending work items
-- Support task priorities and dependencies
-- Implement thread synchronization using mutexes and condition variables
-- Add cancellation and timeout support for tasks
-- Include deadlock detection or prevention mechanisms
-- Provide statistical monitoring (throughput, latency, queue length)
-- Implement graceful shutdown
+** Phase 1 Capstone Project
+Build a multi-threaded web server in C that can handle basic HTTP requests, serve static files, and maintain connection statistics. This integrates memory management, system calls, data structures, and provide foundation for networking concepts.
 
-Input: Task submission API calls
-Output: Task execution results and performance metrics
+* Phase 2: Systems Deep Dive
+
+*** Resources
+- Operating System Concepts by Silberschatz, Galvin, & Gagne (Chapters 1-7)
+- The Linux Programming Interface by Michael Kerrisk
+
+*** Projects:
+- Implement various CPU scheduling algorithms simulation.
+- Build a thread pool library in C.
+- Create a simple memory manager with virtual memory simulation.
+- Develop a basic file system organizer tool.
+
+** Network Programming & Distributed Concepts
+
+*** Resources
+- Unix Network Programming by Stevens (Volume 1, Chapters 1-8)
+- Designing Data-Intensive Applications by Martin Kleppmann (Chapters 1-4)
+
+*** Projects
+- Build a chat server/client using TCP sockets.
+- Implement a basic HTTP server with proper protocol handling.
+- Create a distributed key-value store (simplified version).
+- Develop a network monitoring tool.
+
+** Database Systems & Storage
+
+*** Resources
+- Database System Concepts by Silberschatz, Korth, & Sudarshan (Chapters 1-8, 11-13)
+- Designing Data-Intensive Applications by Martin Kleppmann (Chapters 5-9)
+- *Implementation*: Database Design and Implementation by Sciore
+
+*** Projects
+- Build a simple relational database engine with SQL support.
+- Implement a B+ tree index structure.
+- Create a transaction log and recovery system.
+- Develop a database connection pool library.
+
+** Compilers & Language Implementation
+
+*** Resources
+- Crafting Interpreters by Robert Nystrom
+- Writing an Interpreter and Compiler in Go by Thorsten Ball
+- *Theory*: Compilers: Principles, Techniques, and Tools by Aho et al.
+
+*** Projects
+- Build a lexer and parser for a simple language.
+- Implement an interpreter for arithmetic expressions with variables.
+- Create a basic compiler that generates bytecode.
+- Develop a simple garbage collector.
+
+** Phase 2 Capstone Project
+Design and implement a distributed database system with a custom query language. This integrates OS concepts (processes, threads), networking (client-server communication), database systems (storage, indexing), and language implementation (query parser).
+
+* Phase 3: Advanced System & Specialization
+
+** Advanced C & System Programming
+
+*** Resources
+- *Core*: Expert C Programming by Peter van der Linden
+- *Performance*: Systems Performance by Brendan Gregg (C related sections)
+- *Advanced*: Advanced C and C++ Compiling by Milan Stevanovic
+
+*** Projects
+- Optimize your previous projects for performance
+- Build a high performance memory pool allocator
+- Create a profiling and debugging toolkit
+- Develop a cross platform system monitoring library
+
+** Go Programming & Concurrent Systems
+
+*** Resources
+- The Go Programming Language by Donovan & Kernighan
+- *Concurrency*: Concurrency in Go by Katherin Cox-Buday
+- *Web Systems*: Building Microservices with Go by Nic Jackson
+
+*** Projects
+- Build a concurrent web crawler with rate limiting
+- Implement a REST API with proper middleware and error handling
+- Create a distributed job processing system
+- Develop a real-time processing pipeline
+
+*** Additional Focus Area
+- Study Perl 5 fundamentals through "Learning Perl" by Schwartz
+- Understand legacy codebase navigation and refactoring patterns
+- Practice reading and understanding large, unfamiliar codebase
+
+** Backend Engineering & Architecture
+
+*** Resources
+- Designing Data-Intensive Applications (complete remaining chapters)
+- *Architecture*: Software Architecture Patterns by Richards
+- *Microservices*: Building Microservices by Newman
+- *Performance*: High Performance Browser Networking by Grigorik
+
+*** Projects
+- Design a scalable API architecture for a mobile app
+- Implement caching layers with Redis integration
+- Build a microservices communication framework
+- Create a comprehensive logging and monitoring system
+
+** Interview Preparation
+
+*** Resources
+- System Design Interview by Alex Yu
+- Cracking the Coding Interview by McDowell
+- The Tech Resume Inside Out by Gergely Orosz
+
+*** Projects
+- Complete a system design for a large-scale application
+- Solve medium to hard LeetCode problems in multiple languages
+- Prepare technical presentations of major projects
+- Build a portfolio website showcasing my journey
+
+** Capstone Project
+Develop a complete backend system for your mobile travel app that demonstrates all learned concepts. Include comprehensive documentation and testing.
